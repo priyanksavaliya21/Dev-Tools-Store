@@ -1,0 +1,131 @@
+# DevTools Store - Advanced SEO Optimized robots.txt
+# Last updated: May 17, 2026
+
+# Default rule - Allow all crawlers
+User-agent: *
+Allow: /
+Allow: /success
+Allow: /cancel
+Allow: /api/webhook/
+
+# Disallow sensitive/private routes
+Disallow: /admin/
+Disallow: /api/create-checkout-session/
+Disallow: /api/create-portal-session/
+
+# Block duplicate content from query parameters
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+Disallow: /*?utm_content=
+Disallow: /*?utm_term=
+Disallow: /*?ref=
+Disallow: /*?via=
+Disallow: /*?from=
+Disallow: /*?source=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+Disallow: /*?msclkid=
+Disallow: /*?gb_adchannel=
+Disallow: /*?session=
+Disallow: /*?tracking=
+
+# Global crawl optimization
+Crawl-delay: 1
+Request-rate: 10/1s
+
+# Google Bot - Fast crawl
+User-agent: Googlebot
+Allow: /
+Allow: /admin/
+Crawl-delay: 0.5
+Request-rate: 20/1s
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+Request-rate: 10/1s
+
+# Yandex Bot
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Baidu Spider (China search)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Meta/Facebook Bot
+User-agent: facebookexternalhit
+Allow: /
+
+# Apple Bot (Siri)
+User-agent: Applebot
+Allow: /
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
+
+# Twitter Bot
+User-agent: Twitterbot
+Allow: /
+
+# Discord Bot
+User-agent: Discordbot
+Allow: /
+
+# Slack Bot
+User-agent: Slurp
+Allow: /
+
+# Block harmful/malicious bots
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MJ12bot
+User-agent: YandexBot-Image
+User-agent: Screaming Frog SEO Spider
+Disallow: /
+
+# Block scraper bots
+User-agent: scrapy
+User-agent: curl
+User-agent: Wget
+Disallow: /
+
+# Social Media Optimization
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Telegram
+Allow: /
+
+# Allow Rate Limiting Info
+User-agent: *
+Crawl-delay: 1
+
+# Primary Sitemaps for Search Engines
+Sitemap: /sitemap.xml
+Sitemap: /sitemap-products.xml
+Sitemap: /sitemap-pages.xml
+Sitemap: /sitemap-blog.xml
+
+# Host for search engines
+Host: https://devtools-store.com
+
+# Additional SEO rules
+Allow: /*?page=
+Allow: /*?sort=

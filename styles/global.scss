@@ -1,0 +1,191 @@
+@import "./breakpoints.scss";
+@import "./container.scss";
+@import "./theme.scss";
+@import "./common.scss";
+@import "./components.scss";
+@import "./home.scss";
+@import "./admin.scss";
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--font1);
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color2);
+  color: var(--white);
+}
+
+:focus::placeholder {
+  opacity: 0;
+}
+
+::placeholder {
+  opacity: 1;
+  @include transition;
+}
+
+a,
+span,
+a:hover,
+a:active,
+button,
+label,
+input {
+  text-decoration: none;
+  outline: none;
+  border: unset;
+  background-color: unset;
+  color: unset;
+  display: inline-block;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+}
+
+span {
+  cursor: inherit;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+button {
+  text-decoration: none;
+  @include transition;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+  @include transition;
+}
+
+select {
+  font-family: "DM Sans", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grad1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}

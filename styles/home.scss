@@ -1,0 +1,862 @@
+.Hero_Section {
+  background: var(--grad-hero);
+  padding: 160px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  @include breakpoint("max-lg") {
+    padding: 140px 0 70px;
+  }
+
+  @include breakpoint("max-md") {
+    padding: 120px 0 60px;
+  }
+
+  @include breakpoint("max-sm") {
+    padding: 100px 0 45px;
+  }
+
+  @include breakpoint("max-xs") {
+    padding: 90px 0 40px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    -webkit-filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: heroOrb 12s ease-in-out infinite alternate;
+  }
+
+  &::before {
+    width: 500px;
+    height: 500px;
+    background: rgba(0, 76, 211, 0.3);
+    top: -150px;
+    right: -100px;
+
+    @include breakpoint("max-sm") {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &::after {
+    width: 400px;
+    height: 400px;
+    background: rgba(48, 120, 248, 0.2);
+    bottom: -100px;
+    left: -80px;
+    animation-delay: -6s;
+
+    @include breakpoint("max-sm") {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .Hero_Content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    margin: 0 auto;
+    @include animate-in(0s, 0.8s, "fadeInUp");
+
+    .Hero_Badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      @include glass("dark");
+      border-radius: 100px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+      @include breakpoint("max-sm") {
+        font-size: 12px;
+        padding: 6px 14px;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .Badge_Dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #34d399;
+        animation: pulse 2s ease-in-out infinite;
+        flex-shrink: 0;
+        box-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
+      }
+    }
+
+    .Hero_Title {
+      font-weight: 800;
+      font-size: 54px;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+
+      @include breakpoint("max-lg") {
+        font-size: 46px;
+      }
+
+      @include breakpoint("max-md") {
+        font-size: 38px;
+        letter-spacing: -1px;
+      }
+
+      @include breakpoint("max-sm") {
+        font-size: 30px;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+      }
+
+      @include breakpoint("max-xs") {
+        font-size: 26px;
+      }
+
+      .Gradient_Text {
+        background: linear-gradient(135deg, #60a5fa, #3b82f6, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    .Hero_Description {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @include breakpoint("max-md") {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+
+      @include breakpoint("max-sm") {
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .Hero_CTA {
+      @include flex_row;
+      @include justifycontent_center;
+      gap: 14px;
+      flex-wrap: wrap;
+
+      .CTA_Primary {
+        @include Btn_Primary;
+        padding: 16px 32px;
+        font-size: 16px;
+        border-radius: 14px;
+        gap: 0;
+
+        .CTA_Icon {
+          display: block;
+          flex-shrink: 0;
+          margin-right: 8px;
+        }
+
+        svg {
+          display: block;
+          flex-shrink: 0;
+        }
+
+        @include breakpoint("max-sm") {
+          padding: 13px 24px;
+          font-size: 14px;
+        }
+      }
+
+      .CTA_Secondary {
+        @include flex_row;
+        gap: 0;
+        padding: 16px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        @include transition;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        .CTA_Icon {
+          display: block;
+          flex-shrink: 0;
+          margin-left: 6px;
+        }
+
+        svg {
+          display: block;
+          flex-shrink: 0;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba(255, 255, 255, 0.35);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @include breakpoint("max-sm") {
+          padding: 13px 24px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .Hero_Stats {
+    position: relative;
+    z-index: 2;
+    @include flex_row;
+    @include justifycontent_center;
+    gap: 0;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    @include glass("dark");
+    border-radius: 20px;
+    padding: 30px 16px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    @include animate-in(0.3s, 0.8s, "fadeInUp");
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    @include breakpoint("max-md") {
+      margin-top: 40px;
+      padding: 22px 12px;
+      border-radius: 16px;
+    }
+
+    @include breakpoint("max-sm") {
+      margin-top: 32px;
+      padding: 20px 10px;
+      gap: 0;
+      border-radius: 14px;
+    }
+
+    .Stat_Item {
+      text-align: center;
+      flex: 1;
+      padding: 0 20px;
+
+      @include breakpoint("max-sm") {
+        padding: 0 8px;
+      }
+
+      .Stat_Value {
+        font-size: 30px;
+        font-weight: 800;
+        color: var(--white);
+
+        @include breakpoint("max-md") {
+          font-size: 24px;
+        }
+
+        @include breakpoint("max-sm") {
+          font-size: 20px;
+        }
+
+        @include breakpoint("max-xs") {
+          font-size: 18px;
+        }
+      }
+
+      .Stat_Label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 4px;
+
+        @include breakpoint("max-sm") {
+          font-size: 11px;
+        }
+      }
+    }
+
+    .Stat_Divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+
+      @include breakpoint("max-sm") {
+        height: 30px;
+      }
+    }
+  }
+}
+
+@keyframes heroOrb {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+
+  100% {
+    transform: scale(1.2) translate(40px, 40px);
+  }
+}
+
+.Section_Label {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--grad-subtle);
+  color: var(--color1);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  @include box-shadow("xs");
+
+  @include breakpoint("max-sm") {
+    font-size: 11px;
+    padding: 5px 14px;
+    margin-bottom: 12px;
+  }
+}
+
+.Products_Section {
+  @include Section_Padding_Both;
+  background: var(--ds-bg-primary);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(
+      180deg,
+      rgba(5, 0, 59, 0.03) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .Section_Header {
+    @include Head_Block;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint("max-md") {
+      margin-bottom: 36px;
+    }
+
+    .Description {
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .Products_Grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint("max-lg") {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include breakpoint("max-sm") {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin: 0 auto;
+      gap: 18px;
+    }
+  }
+}
+
+.Pricing_Section_Wrapper {
+  @include Section_Padding_Both;
+  background: var(--white);
+  position: relative;
+
+  .Section_Header {
+    @include Head_Block;
+    margin-bottom: 50px;
+
+    @include breakpoint("max-md") {
+      margin-bottom: 36px;
+    }
+
+    .Description {
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .Billing_Toggle {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color3);
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 4px 20px rgba(5, 0, 59, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    @include breakpoint("max-sm") {
+      margin-top: 18px;
+    }
+
+    .Toggle_Btn {
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      border-radius: 100px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      @include flex_row;
+      gap: 8px;
+      @include transition;
+      white-space: nowrap;
+
+      @include breakpoint("max-sm") {
+        padding: 10px 20px;
+        font-size: 13px;
+        gap: 6px;
+      }
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      &.Active {
+        background: var(--grad1);
+        color: var(--white);
+        @include box-shadow("btn");
+      }
+    }
+  }
+
+  .Plans_Grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @include breakpoint("max-sm") {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      gap: 20px;
+    }
+  }
+
+  .Pricing_Card {
+    @include card(24px, 0);
+    border: 1.5px solid #7f81845b;
+    overflow: hidden;
+    position: relative;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      @include box-shadow("card-hover");
+      border-color: rgba(48, 120, 248, 0.2);
+    }
+
+    &.Popular {
+      border-color: var(--color1);
+      @include box-shadow("card-elevated");
+      background:
+        linear-gradient(
+          180deg,
+          rgba(48, 120, 248, 0.03) 0%,
+          rgba(255, 255, 255, 0) 100%
+        ),
+        var(--white);
+
+      &:hover {
+        @include box-shadow("card-elevated");
+        transform: translateY(-8px);
+        border-color: var(--color2);
+      }
+    }
+
+    .Popular_Badge {
+      width: fit-content;
+      position: absolute;
+      top: -1px;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 7px 18px;
+      background: var(--grad1);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 0 0 10px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      @include box-shadow("btn");
+
+      @include breakpoint("max-sm") {
+        font-size: 10px;
+        padding: 5px 12px;
+      }
+    }
+
+    .Plan_Top {
+      padding: 32px 28px 24px;
+
+      @include breakpoint("max-sm") {
+        padding: 24px 20px 18px;
+      }
+
+      .Plan_Icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        background: var(--grad-subtle);
+        @include flex_row;
+        @include justifycontent_center;
+        font-size: 30px;
+        margin-bottom: 18px;
+        @include box-shadow("sm");
+        @include transition;
+
+        @include breakpoint("max-sm") {
+          width: 48px;
+          height: 48px;
+          font-size: 24px;
+          border-radius: 12px;
+        }
+      }
+
+      .Plan_Name {
+        font-weight: 700;
+        font-size: 22px;
+        color: var(--font1);
+        margin-bottom: 6px;
+
+        @include breakpoint("max-sm") {
+          font-size: 19px;
+        }
+      }
+
+      .Plan_Description {
+        font-size: 14px;
+        color: var(--font2);
+        line-height: 1.6;
+        margin-bottom: 18px;
+
+        @include breakpoint("max-sm") {
+          font-size: 13px;
+          margin-bottom: 14px;
+        }
+      }
+
+      .Plan_Price {
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--font1);
+        margin-bottom: 22px;
+
+        @include breakpoint("max-sm") {
+          font-size: 32px;
+          margin-bottom: 18px;
+        }
+
+        .Price_Period {
+          font-size: 16px;
+          font-weight: 400;
+          color: var(--font2);
+        }
+      }
+
+      .Price_Monthly_Equivalent {
+        font-size: 14px;
+        color: #34d399;
+        font-weight: 500;
+        margin-top: -16px;
+        margin-bottom: 18px;
+        padding: 6px 14px;
+        background: rgba(52, 211, 153, 0.08);
+        border-radius: 8px;
+        display: inline-block;
+
+        @include breakpoint("max-sm") {
+          font-size: 13px;
+          margin-top: -12px;
+          margin-bottom: 14px;
+        }
+      }
+
+      .Customer_Select {
+        @include form-input;
+        background-color: var(--bg2);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23676f83' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 14px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .Phone_Input {
+        @include form-input;
+        margin-bottom: 10px;
+      }
+
+      .Error_Text {
+        color: var(--red);
+        font-size: 12px;
+        margin: 6px 0 10px;
+        font-weight: 500;
+      }
+
+      .Subscribe_Btn {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        margin-top: 4px;
+        @include flex_row;
+        @include justifycontent_center;
+        @include transition;
+
+        @include breakpoint("max-sm") {
+          padding: 12px;
+          font-size: 14px;
+          border-radius: 10px;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          box-shadow: none;
+        }
+
+        .Btn_Spinner {
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-top-color: var(--white);
+          border-radius: 50%;
+          animation: spin 0.6s linear infinite;
+          margin-right: 8px;
+        }
+
+        &.Primary_CTA {
+          @include BG_Gradiant_Animation;
+          color: var(--white);
+          @include box-shadow("btn");
+
+          &:hover {
+            @include box-shadow("btn-hover");
+            transform: translateY(-2px);
+          }
+        }
+
+        &.Secondary_CTA {
+          background: var(--white);
+          color: var(--font1);
+          border: 2px solid var(--primaryBorder);
+          box-shadow: none;
+          @include transition;
+          box-shadow:
+            rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+            rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+          &:hover {
+            border-color: var(--color1);
+            background: var(--bg2);
+            @include box-shadow("sm");
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+
+    .Plan_Bottom {
+      padding: 22px 28px 28px;
+      border-top: 1px solid var(--ds-card-border);
+      background: var(--bg2);
+
+      @include breakpoint("max-sm") {
+        padding: 18px 20px 24px;
+      }
+
+      .Features_Title {
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--font2);
+        margin-bottom: 16px;
+
+        @include breakpoint("max-sm") {
+          font-size: 12px;
+          margin-bottom: 12px;
+        }
+      }
+
+      .Features_List {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          @include flex_row;
+          gap: 10px;
+          font-size: 14px;
+          color: var(--font2);
+          margin-bottom: 10px;
+
+          @include breakpoint("max-sm") {
+            font-size: 13px;
+            gap: 8px;
+            margin-bottom: 8px;
+          }
+
+          .Feature_Check {
+            color: var(--green);
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(0, 185, 90, 0.1);
+            @include flex_row;
+            @include justifycontent_center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Success_Page,
+.Cancel_Page {
+  min-height: 100vh;
+  @include flex_row;
+  @include justifycontent_center;
+  @include flex_dir_column;
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--ds-bg-primary);
+
+  .Status_Icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    @include flex_row;
+    @include justifycontent_center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+    @include box-shadow("lg");
+
+    @include breakpoint("max-sm") {
+      width: 64px;
+      height: 64px;
+      font-size: 28px;
+    }
+  }
+
+  .Page_Title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--font1);
+    margin-bottom: 12px;
+
+    @include breakpoint("max-sm") {
+      font-size: 24px;
+    }
+  }
+
+  .Page_Description {
+    font-size: 16px;
+    color: var(--font2);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 500px;
+
+    @include breakpoint("max-sm") {
+      font-size: 14px;
+    }
+  }
+
+  .Page_Links {
+    @include flex_row;
+    @include justifycontent_center;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .Link_Primary {
+      @include Btn_Primary;
+      padding: 12px 24px;
+      border-radius: 10px;
+    }
+
+    .Link_Secondary {
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color1);
+      border: 1px solid var(--color2);
+      border-radius: 10px;
+      @include transition;
+      @include box-shadow("xs");
+
+      &:hover {
+        background: var(--bg3);
+        @include box-shadow("sm");
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.Success_Page .Status_Icon {
+  background: var(--ds-badge-active);
+  color: var(--ds-badge-active-text);
+}
+
+.Cancel_Page .Status_Icon {
+  background: var(--ds-badge-canceled);
+  color: var(--ds-badge-canceled-text);
+}

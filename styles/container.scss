@@ -1,0 +1,50 @@
+@use "./breakpoints.scss" as bp;
+$bp: (
+  base: 0px,
+  xxs: 375px,
+  xs: 540px,
+  sm: 768px,
+  md: 992px,
+  lg: 1280px,
+  xl: 1440px,
+);
+.container {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  @include bp.breakpoint(base) {
+    max-width: 100%;
+  }
+  @include bp.breakpoint(xs) {
+    max-width: 540px;
+  }
+  @include bp.breakpoint(sm) {
+    max-width: 768px;
+  }
+  @include bp.breakpoint(md) {
+    max-width: 992px;
+  }
+  @include bp.breakpoint(lg) {
+    max-width: 1280px;
+  }
+  @include bp.breakpoint(xl) {
+    max-width: 1320px;
+  }
+}
+.Share_Report_Page .container {
+  @include bp.breakpoint(base) {
+    max-width: 100%;
+  }
+  @include bp.breakpoint(xs) {
+    max-width: 540px;
+  }
+  @include bp.breakpoint(sm) {
+    max-width: 768px;
+  }
+  @include bp.breakpoint(md) {
+    max-width: 992px;
+  }
+  @include bp.breakpoint(lg) {
+    max-width: 1200px;
+  }
+}

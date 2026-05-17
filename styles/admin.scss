@@ -1,0 +1,248 @@
+.Admin_Page {
+  padding: 120px 0 60px;
+  background: var(--ds-bg-primary);
+  min-height: 100vh;
+
+  @include breakpoint("max-md") {
+    padding: 100px 0 40px;
+  }
+
+  @include breakpoint("max-sm") {
+    padding: 90px 0 30px;
+  }
+
+  .Admin_Header {
+    margin-bottom: 40px;
+    @include animate-in(0s, 0.6s, "fadeInUp");
+
+    @include breakpoint("max-md") {
+      margin-bottom: 30px;
+    }
+
+    .Admin_Title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--font1);
+      margin-bottom: 8px;
+
+      @include breakpoint("max-sm") {
+        font-size: 24px;
+      }
+    }
+
+    .Admin_Subtitle {
+      font-size: 16px;
+      color: var(--font2);
+
+      @include breakpoint("max-sm") {
+        font-size: 14px;
+      }
+    }
+
+    .Admin_Security_Note {
+      margin-top: 14px;
+      padding: 12px 18px;
+      background: rgba(255, 165, 0, 0.06);
+      border: 1px solid rgba(255, 165, 0, 0.18);
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 500;
+      @include box-shadow("xs");
+    }
+  }
+
+  .Admin_Section {
+    margin-bottom: 36px;
+    @include animate-in(0.1s, 0.6s, "fadeInUp");
+
+    @include breakpoint("max-md") {
+      margin-bottom: 28px;
+    }
+
+    .Section_Title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--font1);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid transparent;
+      background-image:
+        linear-gradient(var(--ds-bg-primary), var(--ds-bg-primary)),
+        var(--grad1);
+      background-origin: padding-box, border-box;
+      background-clip: padding-box, border-box;
+      border-bottom: 2px solid;
+      border-image: var(--grad1) 1;
+      width: fit-content;
+
+      @include breakpoint("max-sm") {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .Admin_Table_Wrapper {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--ds-card-border);
+    overflow-x: auto;
+    @include box-shadow("card");
+    @include transition;
+
+    &:hover {
+      @include box-shadow("lg");
+    }
+  }
+
+  .Admin_Table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    @include breakpoint("max-sm") {
+      font-size: 12px;
+    }
+
+    thead {
+      th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 600;
+        color: var(--font1);
+        background: var(--bg1);
+        border-bottom: 1px solid var(--ds-card-border);
+        white-space: nowrap;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+
+        @include breakpoint("max-sm") {
+          padding: 10px 12px;
+          font-size: 11px;
+        }
+
+        &:first-child {
+          border-radius: 16px 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 16px 0 0;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        @include transition;
+
+        &:hover {
+          background: var(--bg3);
+
+          td {
+            color: var(--font1);
+          }
+        }
+
+        &:not(:last-child) td {
+          border-bottom: 1px solid var(--ds-card-border);
+        }
+      }
+
+      td {
+        padding: 14px 18px;
+        color: var(--font2);
+        white-space: nowrap;
+
+        @include breakpoint("max-sm") {
+          padding: 10px 12px;
+        }
+      }
+    }
+
+    .Empty_Row td {
+      text-align: center;
+      padding: 40px 30px;
+      color: var(--font2);
+      font-style: italic;
+    }
+
+    .Cell_Primary {
+      font-weight: 600;
+      color: var(--font1);
+    }
+
+    .Cell_Amount {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .Cell_Truncate {
+      font-size: 11px;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: "DM Sans", monospace;
+      opacity: 0.7;
+    }
+
+    .Cell_Canceling_Text {
+      color: var(--ds-badge-canceling-text, #e67e22);
+      font-weight: 500;
+    }
+  }
+
+  .Admin_Error_Banner {
+    padding: 14px 20px;
+    background: var(--ds-badge-canceled);
+    color: var(--ds-badge-canceled-text);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    @include box-shadow("sm");
+  }
+
+  .Portal_Btn {
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color1);
+    background: rgba(0, 76, 211, 0.06);
+    border: 1px solid rgba(0, 76, 211, 0.12);
+    border-radius: 8px;
+    cursor: pointer;
+    @include transition;
+    @include box-shadow("xs");
+
+    &:hover {
+      background: rgba(0, 76, 211, 0.12);
+      @include box-shadow("sm");
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  .Refresh_Btn {
+    @include Btn_Primary;
+    padding: 10px 22px;
+    font-size: 14px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+
+    .Btn_Spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 6px;
+    }
+  }
+}

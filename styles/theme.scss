@@ -1,0 +1,59 @@
+:root {
+  scroll-behavior: smooth;
+  --white: #ffffff;
+  --font1: #1a1d26;
+  --font2: #5a6178;
+  --color1: #004cd3;
+  --color2: #3078f8;
+  --color3: #05003b;
+  --green: #00b95a;
+  --red: #ff4747;
+  --orange: #ffa500;
+  --bg1: #f0f2f7;
+  --bg2: #f8f9fb;
+  --bg3: #eef1f8;
+  --primaryBorder: #e2e5ed;
+  --grad1: linear-gradient(135deg, #004cd3 0%, #3078f8 100%);
+  --grad1Revert: linear-gradient(135deg, #3078f8 0%, #004cd3 100%);
+  --grad-subtle: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  --grad-hero: linear-gradient(160deg, #05003b 0%, #0a1252 50%, #0d1a6e 100%);
+  --grad-footer: linear-gradient(180deg, #05003b 0%, #020024 100%);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md:
+    0 4px 8px -1px rgba(0, 0, 0, 0.2), 0 2px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg:
+    0 10px 20px -3px rgba(0, 0, 0, 0.25), 0 6px 12px -4px rgba(0, 0, 0, 0.15);
+  --shadow-xl:
+    0 20px 30px -5px rgba(0, 0, 0, 0.25), 0 10px 15px -6px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.1), 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover:
+    0 12px 40px rgba(0, 76, 211, 0.25), 0 6px 18px rgba(0, 0, 0, 0.15);
+  --shadow-card-elevated:
+    0 16px 48px rgba(0, 76, 211, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: 20px;
+  --glass-bg-dark: rgba(255, 255, 255, 0.06);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --navbar-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-btn: 0 4px 12px rgba(0, 76, 211, 0.35);
+  --shadow-btn-hover: 0 8px 24px rgba(0, 76, 211, 0.5);
+  --shadow-input-focus: 0 0 0 3px rgba(48, 120, 248, 0.12);
+  --ds-bg-primary: #f4f6fb;
+  --ds-bg-hero: #05003b;
+  --ds-card-bg: #ffffff;
+  --ds-card-border: #e5e7eb;
+  --ds-card-shadow: rgba(0, 0, 0, 0.06);
+  --ds-badge-active: #dcfce7;
+  --ds-badge-active-text: #166534;
+  --ds-badge-canceled: #fee2e2;
+  --ds-badge-canceled-text: #991b1b;
+  --ds-badge-pending: #fef3c7;
+  --ds-badge-pending-text: #92400e;
+  --admin-header-bg: linear-gradient(135deg, #05003b 0%, #0d1a6e 100%);
+  --admin-stat-bg: rgba(0, 76, 211, 0.06);
+}

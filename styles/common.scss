@@ -1,0 +1,556 @@
+@mixin flex_row {
+  display: flex;
+  align-items: center;
+}
+
+@mixin Flex_Start {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin justifycontent_center {
+  justify-content: center;
+}
+
+@mixin justifycontent_between {
+  justify-content: space-between;
+}
+
+@mixin flex_dir_column {
+  flex-direction: column;
+}
+
+@mixin align_items_start {
+  align-items: flex-start;
+}
+
+@mixin flex_wrap {
+  flex-wrap: wrap;
+}
+
+@mixin transition($property: all, $duration: 0.4s) {
+  transition: $property $duration cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@mixin box-shadow($level: "md") {
+  @if $level == "xs" {
+    box-shadow: var(--shadow-xs);
+  } @else if $level == "sm" {
+    box-shadow: var(--shadow-sm);
+  } @else if $level == "md" {
+    box-shadow: var(--shadow-md);
+  } @else if $level == "lg" {
+    box-shadow: var(--shadow-lg);
+  } @else if $level == "xl" {
+    box-shadow: var(--shadow-xl);
+  } @else if $level == "2xl" {
+    box-shadow: var(--shadow-2xl);
+  } @else if $level == "card" {
+    box-shadow: var(--shadow-card);
+  } @else if $level == "card-hover" {
+    box-shadow: var(--shadow-card-hover);
+  } @else if $level == "card-elevated" {
+    box-shadow: var(--shadow-card-elevated);
+  } @else if $level == "btn" {
+    box-shadow: var(--shadow-btn);
+  } @else if $level == "btn-hover" {
+    box-shadow: var(--shadow-btn-hover);
+  } @else if $level == "navbar" {
+    box-shadow: var(--navbar-shadow);
+  } @else if $level == "input-focus" {
+    box-shadow: var(--shadow-input-focus);
+  }
+}
+
+@mixin glass($variant: "light") {
+  @if $variant == "light" {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  } @else if $variant == "dark" {
+    background: var(--glass-bg-dark);
+    border: 1px solid var(--glass-border-dark);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  } @else if $variant == "navbar" {
+    background: var(--navbar-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+}
+
+@mixin card($radius: 20px, $padding: 28px) {
+  background: var(--ds-card-bg);
+  border-radius: $radius;
+  border: 1px solid var(--ds-card-border);
+  padding: $padding;
+  @include box-shadow("card");
+  @include transition;
+}
+
+@mixin card-hover($lift: -6px) {
+  &:hover {
+    transform: translateY($lift);
+    @include box-shadow("card-hover");
+    border-color: rgba(48, 120, 248, 0.25);
+  }
+}
+
+@mixin glow($color: rgba(48, 120, 248, 0.15), $size: 60px) {
+  &::after {
+    content: "";
+    position: absolute;
+    top: -$size;
+    right: -$size;
+    width: $size * 3;
+    height: $size * 3;
+    background: radial-gradient(circle, $color 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    @include transition;
+    z-index: 0;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+@mixin gradient-top-bar($height: 4px) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $height;
+    background: var(--grad1);
+    border-radius: $height $height 0 0;
+    opacity: 0;
+    @include transition;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+@mixin animate-in($delay: 0s, $duration: 0.6s, $type: "fadeInUp") {
+  animation: #{$type} $duration ease-out $delay both;
+}
+
+@mixin stagger-children($base-delay: 0.1s, $count: 8) {
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      animation-delay: $base-delay * $i;
+    }
+  }
+}
+
+@mixin Events($touch, $pointer) {
+  touch-action: $touch;
+  pointer-events: $pointer;
+}
+
+@mixin TextBeautify($letter-spacing, $text-transform) {
+  letter-spacing: $letter-spacing;
+  text-transform: $text-transform;
+}
+
+@mixin Img_hover {
+  img {
+    transform: scale(1.1);
+  }
+}
+
+@mixin row($margin) {
+  margin: $margin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@mixin on($display) {
+  display: $display;
+  visibility: visible;
+  touch-action: auto;
+  pointer-events: all;
+  opacity: 1;
+}
+
+@mixin off($display) {
+  display: $display;
+  visibility: hidden;
+  touch-action: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+@mixin description($line) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+@mixin img_fit() {
+  @include flex_row;
+  @include justifycontent_center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@mixin text_grad() {
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+@mixin Text_Gradient_Remover() {
+  background: transparent !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  text-fill-color: unset !important;
+}
+
+@mixin BG_Gradiant_Animation() {
+  background: linear-gradient(-45deg, #004cd3, #3078f8, #004cd3, #3078f8);
+  background-size: 400% 400%;
+  animation: gradient 3s ease infinite;
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@mixin Layer {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  z-index: 1008;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  @include flex_row;
+  @include justifycontent_center;
+  @include flex_dir_column;
+
+  @include breakpoint("max-sm") {
+    padding: 10px;
+  }
+}
+
+@mixin Btn_Primary() {
+  width: fit-content;
+  background: var(--grad1);
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+  overflow: hidden;
+  text-align: center;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  @include flex_row;
+  @include justifycontent_center;
+  @include transition;
+  @include box-shadow("btn");
+
+  &:hover {
+    background: var(--grad1Revert);
+    @include box-shadow("btn-hover");
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include breakpoint("max-lg") {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  @include breakpoint("max-md") {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  @include breakpoint("max-sm") {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  @include breakpoint("max-xs") {
+    padding: 7px 12px;
+  }
+}
+
+@mixin Head_Block() {
+  text-align: center;
+
+  .Title {
+    font-weight: 800;
+    font-size: 42px;
+    letter-spacing: -0.48px;
+    color: var(--font1);
+    margin-bottom: 10px;
+    line-height: 1.4;
+
+    @include breakpoint("max-lg") {
+      font-size: 36px;
+    }
+
+    @include breakpoint("max-md") {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    @include breakpoint("max-sm") {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    @include breakpoint("max-xs") {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    .Gradient_Text {
+      @include text_grad;
+    }
+  }
+
+  .Description {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--font2);
+
+    @include breakpoint("max-lg") {
+      font-size: 16px;
+    }
+
+    @include breakpoint("max-md") {
+      font-size: 14px;
+    }
+
+    @include breakpoint("max-sm") {
+      font-size: 12px;
+    }
+  }
+}
+
+@mixin Font_md() {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--font1);
+
+  @include breakpoint("max-lg") {
+    font-size: 28px;
+  }
+
+  @include breakpoint("max-md") {
+    font-size: 24px;
+  }
+
+  @include breakpoint("max-sm") {
+    font-size: 20px;
+  }
+
+  @include breakpoint("max-xs") {
+    font-size: 18px;
+  }
+}
+
+@mixin Font_Lg() {
+  font-size: 42px;
+  font-weight: 700;
+
+  @include breakpoint("max-lg") {
+    font-size: 36px;
+  }
+
+  @include breakpoint("max-md") {
+    font-size: 32px;
+  }
+
+  @include breakpoint("max-sm") {
+    font-size: 26px;
+  }
+
+  @include breakpoint("max-xs") {
+    font-size: 20px;
+  }
+}
+
+@mixin Sec_Padding() {
+  padding: 70px 0;
+
+  @include breakpoint("max-xl") {
+    padding: 60px 0;
+  }
+
+  @include breakpoint("max-lg") {
+    padding: 50px 0;
+  }
+
+  @include breakpoint("max-md") {
+    padding: 40px 0;
+  }
+
+  @include breakpoint("max-sm") {
+    padding: 30px 0;
+  }
+
+  @include breakpoint("max-xs") {
+    padding: 25px 0;
+  }
+}
+
+@mixin Section_Padding_Both() {
+  padding: 100px 0;
+
+  @include breakpoint("max-xl") {
+    padding: 85px 0;
+  }
+
+  @include breakpoint("max-lg") {
+    padding: 70px 0;
+  }
+
+  @include breakpoint("max-md") {
+    padding: 55px 0;
+  }
+
+  @include breakpoint("max-sm") {
+    padding: 40px 0;
+  }
+
+  @include breakpoint("max-xs") {
+    padding: 25px 0;
+  }
+}
+
+@mixin Section_Padding_Top() {
+  padding-top: 100px;
+
+  @include breakpoint("max-xl") {
+    padding-top: 85px;
+  }
+
+  @include breakpoint("max-lg") {
+    padding-top: 70px;
+  }
+
+  @include breakpoint("max-md") {
+    padding-top: 55px;
+  }
+
+  @include breakpoint("max-sm") {
+    padding-top: 40px;
+  }
+
+  @include breakpoint("max-xs") {
+    padding-top: 25px;
+  }
+}
+
+@mixin Section_Padding_Bottom() {
+  padding-bottom: 100px;
+
+  @include breakpoint("max-xl") {
+    padding-bottom: 85px;
+  }
+
+  @include breakpoint("max-lg") {
+    padding-bottom: 70px;
+  }
+
+  @include breakpoint("max-md") {
+    padding-bottom: 55px;
+  }
+
+  @include breakpoint("max-sm") {
+    padding-bottom: 40px;
+  }
+
+  @include breakpoint("max-xs") {
+    padding-bottom: 25px;
+  }
+}
+
+@mixin form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #bec2c7;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  color: var(--font1);
+  background: var(--white);
+  outline: none;
+  @include transition;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  @include breakpoint("max-sm") {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  &::placeholder {
+    color: var(--font2);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    border-color: #9ca3af;
+    box-shadow:
+      rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+
+  &:focus {
+    border-color: var(--color1);
+    box-shadow: 0 0 0 4px rgba(0, 76, 211, 0.15);
+  }
+}
+
+@mixin badge($bg, $color) {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background: $bg;
+  color: $color;
+  @include box-shadow("xs");
+}
